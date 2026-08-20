@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>منشئ السيرة الذاتية العربية</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&display=swap');
+
+*{box-sizing:border-box}
+:root{
+  --green:#123d35;
+  --green2:#1d5b4d;
+  --gold:#b99655;
+  --gold2:#d7bd82;
+  --ivory:#f7f3ea;
+  --ink:#1d2926;
+  --muted:#68736f;
+  --line:#ddd4c3;
+}
+body{
+  margin:0;
+  font-family:"Cairo","Amiri",Tahoma,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(185,150,85,.10),transparent 28%),
+    radial-gradient(circle at 90% 90%,rgba(18,61,53,.08),transparent 30%),
+    #eef1ef;
+  color:var(--ink);
+}
+.wrap{max-width:1040px;margin:28px auto;padding:0 16px}
+.panel{
+  background:rgba(255,255,255,.97);
+  border:1px solid #e4e6e3;
+  border-radius:18px;
+  padding:28px;
+  box-shadow:0 18px 55px rgba(18,61,53,.10);
+}
+h1{
+  margin:0;
+  text-align:center;
+  font-family:"Amiri",serif;
+  font-size:34px;
+  color:var(--green);
+  letter-spacing:.2px
+}
+.sub{
+  text-align:center;color:var(--muted);
+  margin:4px 0 26px;font-size:14px
+}
+.section-title{
+  position:relative;
+  background:linear-gradient(135deg,var(--green),var(--green2));
+  color:#fff;
+  padding:11px 16px;
+  border-radius:9px;
+  margin:24px 0 14px;
+  font-family:"Amiri",serif;
+  font-size:20px;
+  box-shadow:0 5px 14px rgba(18,61,53,.13)
+}
+.section-title:before{
+  content:"";
+  display:inline-block;
+  width:5px;height:21px;
+  background:var(--gold2);
+  vertical-align:-4px;
+  margin-left:9px;
+  border-radius:4px
+}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.full{grid-column:1/-1}
+label{display:block;font-weight:700;margin-bottom:7px;color:#31413c}
+input,textarea{
+  width:100%;
+  padding:12px 13px;
+  border:1px solid #d6ddd9;
+  border-radius:9px;
+  font:inherit;
+  background:#fcfdfc;
+  color:var(--ink);
+  outline:none;
+  transition:.2s
+}
+input:focus,textarea:focus{
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(185,150,85,.12)
+}
+textarea{min-height:105px;resize:vertical}
+.photo-box{display:flex;align-items:center;gap:18px;margin-bottom:8px}
+.preview{
+  width:100px;height:150px;
+  border:1px solid var(--gold);
+  border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;background:var(--ivory);
+  color:var(--gold);
+  font-weight:700;flex:none
+}
+.preview img{width:100%;height:100%;object-fit:cover}
+.actions{text-align:center;margin-top:28px;padding-top:20px;border-top:1px solid #e7e9e7}
+button{
+  border:0;border-radius:9px;padding:13px 27px;
+  font:inherit;font-weight:700;cursor:pointer;margin:4px;
+  transition:.2s
+}
+button:hover{transform:translateY(-1px)}
+.primary{
+  background:linear-gradient(135deg,var(--green),var(--green2));
+  color:#fff;box-shadow:0 7px 18px rgba(18,61,53,.20)
+}
+.secondary{background:#f0ece2;color:var(--green);border:1px solid #dfd2b8}
+.hint{font-size:13px;color:var(--muted)}
+
+.cv{
+  position:relative;
+  width:210mm;min-height:297mm;
+  background:#fff;
+  margin:28px auto;
+  padding:14mm 16mm;
+  box-shadow:0 8px 28px rgba(0,0,0,.13);
+  overflow:hidden;
+  border:1px solid #e4dfd3;
+}
+.cv-title{
+   text-align:center;
+   font-family:"Amiri",serif;
+   font-size:24px;
+   font-weight:700;
+   color:var(--green);
+   margin:0 0 5mm;
+   position:relative;
+   z-index:1;
+}
+.cv:before{
+  content:"";
+  position:absolute;top:0;right:0;left:0;height:6px;
+  background:linear-gradient(90deg,var(--green),var(--gold),var(--green));
+}
+.cv:after{
+  content:"";
+  position:absolute;
+  top:0;right:0;width:3mm;height:100%;
+  background:linear-gradient(var(--green),transparent 25%,transparent 75%,var(--gold));
+  opacity:.9
+}
+.cv-header{
+  display:flex;gap:19px;align-items:flex-start;
+  border-bottom:1.5px solid var(--gold);
+  padding:8mm 0 10mm;
+  position:relative
+}
+.cv-photo{
+  width:45mm;height:67.5mm;object-fit:cover;
+  border:2px solid var(--gold);
+  border-radius:4px;
+  box-shadow:0 3px 10px rgba(0,0,0,.10)
+}
+.cv-head-info{flex:1;padding-top:3mm}
+.cv-name{
+  font-family:"Amiri",serif;
+  font-size:31px;font-weight:700;
+  color:var(--green);
+  margin:0 0 2px
+}
+.cv-name-ar{
+  font-family:"Amiri",serif;
+  font-size:24px;font-weight:700;
+  color:var(--green2);
+  margin:0 0 6px;
+}
+.cv-summary{
+  font-family:"Amiri",serif;
+  font-size:15px;line-height:1.5;color:#46524e
+}
+.cv-section{margin-top:12px}
+.cv-section h2{
+  font-family:"Amiri",serif;
+  font-size:19px;color:var(--green);
+  border-bottom:1px solid #ded6c5;
+  padding:0 0 4px;margin:0 0 7px;
+  position:relative
+}
+.cv-section h2:after{
+  content:"";
+  display:block;width:38mm;height:2px;
+  background:var(--gold);
+  position:relative;right:0;bottom:-6px
+}
+.row{
+  display:flex;gap:8px;font-family:"Amiri",serif;
+  font-size:14px;line-height:1.5
+}
+.key{font-weight:700;min-width:44mm;color:#33433e}
+.val{flex:1;color:#293531}
+.list{
+  margin:0;padding-right:19px;
+  font-family:"Amiri",serif;
+  font-size:14px;line-height:1.5
+}
+.list li{padding-right:3px;margin-bottom:2px}
+.cv-footer{
+  text-align:center;margin-top:17px;padding-top:8px;
+  border-top:1px solid #e4ddce;
+  font-family:"Amiri",serif;font-size:10px;color:#9b8b68
+}
+@media(max-width:700px){
+  .grid{grid-template-columns:1fr}
+  .cv{transform-origin:top center;transform:scale(.48);margin-bottom:-150mm}
+}
+@media print{
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  @page{size:A4 portrait;margin:0}
+  html,body{width:210mm!important;min-width:210mm!important;margin:0!important;padding:0!important;background:#fff!important}
+  .wrap{width:210mm!important;max-width:none!important;margin:0!important;padding:0!important}
+  .panel,.wrap>h1,.wrap>.sub{display:none!important}
+  #cv{display:block!important;visibility:visible!important;position:relative!important;width:210mm!important;min-width:210mm!important;height:297mm!important;min-height:297mm!important;margin:0!important;padding:14mm 16mm!important;transform:none!important;box-shadow:none!important;border:0!important;overflow:hidden!important;background:#fff!important}
+  #cv *{visibility:visible!important}
+
+  /* Compact A4: keep the complete CV on ONE page */
+  #cv{
+    box-sizing:border-box!important;
+    width:242mm!important;
+    min-width:242mm!important;
+    height:297mm!important;
+    min-height:297mm!important;
+    padding:10mm 14mm!important;
+    transform:scale(.868)!important;
+    transform-origin:top right!important;
+  }
+  #cv .cv-header{padding:5mm 0 6mm!important;gap:12px!important}
+  #cv .cv-photo{width:45mm!important;height:67.5mm!important}
+  #cv .cv-name{font-size:29px!important;margin-bottom:1px!important}
+  #cv .cv-name-ar{font-size:24px!important;margin-bottom:6px!important}
+  #cv .cv-summary{font-size:14.5px!important;line-height:1.5!important}
+  #cv .cv-section{margin-top:8px!important}
+  #cv .cv-section h2{font-size:19px!important;padding-bottom:2px!important;margin-bottom:4px!important}
+  #cv .cv-section h2:after{bottom:-4px!important}
+  #cv .row{font-size:13.5px!important;line-height:1.5!important;gap:5px!important}
+  #cv .key{min-width:40mm!important}
+  #cv .list{font-size:13.5px!important;line-height:1.5!important;padding-right:15px!important}
+  #cv .list li{margin-bottom:2px!important}
+  #cv .cv-footer{margin-top:6px!important;padding-top:4px!important;font-size:8px!important}
+
+  /* Contact values: keep phone and email aligned to the RIGHT */
+  #cv #cvPhone,#cv #cvEmail{
+    direction:ltr!important;
+    text-align:right!important;
+    unicode-bidi:plaintext!important;
+  }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="panel">
+    <h1>منشئ السيرة الذاتية</h1>
+    <div class="sub">أدخل البيانات ثم اضغط «إنشاء وتحميل PDF»</div>
+
+    <div class="section-title">المعلومات الشخصية</div>
+    <div class="grid">
+      <div>
+        <label>الاسم حسب جواز السفر</label>
+        <input id="name" value="HILYA MAWADDAH">
+      </div>
+      <div>
+        <label>الاسم باللغة العربية</label>
+        <input id="arabicName" placeholder="أدخل الاسم بالعربية">
+      </div>
+      <div>
+        <label>الجنسية</label>
+        <input id="nationality" value="INDONESIA">
+      </div>
+      <div class="full">
+        <label>الملخص الشخصي</label>
+        <textarea id="summary">لديّ شغف كبير بالتعلّم، وانفتاح على المعارف والتجارب الجديدة، وحرص على تطوير المهارات من خلال التعلم المستمر. أهتم بعلوم الشريعة والدراسات الإسلامية واللغة العربية، وبالمجالات الجديدة التي تسهم في تنمية الذات.</textarea>
+      </div>
+    </div>
+
+    <div class="section-title">معلومات جواز السفر</div>
+    <div class="grid">
+      <div>
+        <label>رقم جواز السفر</label>
+        <input id="passport" placeholder="أدخل رقم جواز السفر">
+      </div>
+      <div>
+        <label>تاريخ انتهاء جواز السفر</label>
+        <input id="passportExpiry" value="29 ديسمبر 2032">
+      </div>
+      <div class="full">
+        <label>مكان وتاريخ الميلاد</label>
+        <input id="birth" value="موارا بونغو، 29 أكتوبر 2003">
+      </div>
+    </div>
+
+    <div class="section-title">المؤهلات الأكاديمية</div>
+    <div class="grid">
+      <div>
+        <label>نوع المؤهل</label>
+        <input id="qualification" value="الثانوية العامة / ما يعادلها">
+      </div>
+      <div>
+        <label>التخصص / مجال الدراسة</label>
+        <input id="field" value="التربية الإسلامية / علوم الشريعة">
+      </div>
+      <div class="full">
+        <label>اسم المؤسسة / المدرسة</label>
+        <input id="institution" value="مركز دار الحديث بالفيوش، اليمن">
+      </div>
+      <div>
+        <label>المعدل / التقدير</label>
+        <input id="grade" value="97.31">
+      </div>
+    </div>
+
+    <div class="section-title">معلومات التواصل والإقامة</div>
+    <div class="grid">
+      <div>
+        <label>رقم الهاتف</label>
+        <input id="phone" value="+62 851-8549-3630" dir="ltr">
+      </div>
+      <div>
+        <label>البريد الإلكتروني</label>
+        <input id="email" value="hilyamawaddah03@gmail.com" dir="ltr">
+      </div>
+      <div>
+        <label>المحافظة</label>
+        <input id="province" value="جامبي">
+      </div>
+      <div>
+        <label>المدينة</label>
+        <input id="city" value="موارا بونغو">
+      </div>
+      <div class="full">
+        <label>نقاط القوة</label>
+        <textarea id="strengths">شخصية مجتهدة، مستقلة، مسؤولة، وسهلة التكيف مع الظروف والبيئات الجديدة.</textarea>
+      </div>
+    </div>
+
+    <div class="section-title">الإنجازات</div>
+    <textarea id="achievements">حفظ القرآن الكريم كاملاً (30 جزءاً) وإتمام حفظه في سن الخامسة عشرة.
+حفظ عدد من المتون العلمية الإسلامية، منها: الأربعون النووية، نواقض الإسلام، الأصول الثلاثة، القواعد الأربع، الأصول الستة، القواعد الفقهية، سلم الوصول، البيقونية، الجزرية، اللامية، الرحبية، والحائية.</textarea>
+
+    <div class="section-title">التعليم الشرعي</div>
+    <textarea id="religious">دراسة العلوم الشرعية وعلوم الدين منذ سن مبكرة.</textarea>
+
+    <div class="section-title">اللغات</div>
+    <textarea id="languages">اللغة العربية
+اللغة الإنجليزية: مستوى متوسط</textarea>
+
+    <div class="section-title">الاهتمامات</div>
+    <textarea id="interests">علوم الشريعة والدراسات الإسلامية، واللغة العربية.
+الاستفادة من التكنولوجيا ووسائل الإعلام الرقمية في تطوير المعرفة.
+قراءة ودراسة المؤلفات الإسلامية، والتعليم وتطوير الذات.</textarea>
+
+    <div class="section-title">الصورة الشخصية</div>
+    <div class="photo-box">
+      <div class="preview" id="preview">4 × 6</div>
+      <div>
+        <input type="file" id="photo" accept="image/*">
+        <div class="hint">يفضل اختيار صورة شخصية عمودية. ستظهر في السيرة الذاتية بمقاس 4×6 سم.</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="primary" onclick="generatePDF()">إنشاء وتحميل PDF</button>
+      <button class="secondary" onclick="updateCV()">معاينة السيرة الذاتية</button>
+    </div>
+  </div>
+
+  <div id="cv" class="cv">
+    <div class="cv-title">السيرة الذاتية</div>
+    <div class="cv-header">
+      <img id="cvPhoto" class="cv-photo" alt="الصورة الشخصية" style="display:none">
+      <div class="cv-head-info">
+        <div class="cv-name" id="cvName">HILYA MAWADDAH</div>
+        <div class="cv-name-ar" id="cvArabicName"></div>
+        <div class="cv-summary" id="cvSummary"></div>
+      </div>
+    </div>
+
+    <div class="cv-section">
+      <h2>معلومات جواز السفر</h2>
+      <div class="row"><div class="key">رقم جواز السفر:</div><div class="val" id="cvPassport"></div></div>
+      <div class="row"><div class="key">تاريخ الانتهاء:</div><div class="val" id="cvExpiry"></div></div>
+      <div class="row"><div class="key">الجنسية:</div><div class="val" id="cvNationality"></div></div>
+      <div class="row"><div class="key">مكان وتاريخ الميلاد:</div><div class="val" id="cvBirth"></div></div>
+    </div>
+
+    <div class="cv-section">
+      <h2>المؤهلات الأكاديمية</h2>
+      <div class="row"><div class="key">نوع المؤهل:</div><div class="val" id="cvQualification"></div></div>
+      <div class="row"><div class="key">التخصص:</div><div class="val" id="cvField"></div></div>
+      <div class="row"><div class="key">المؤسسة التعليمية:</div><div class="val" id="cvInstitution"></div></div>
+      <div class="row"><div class="key">المعدل / التقدير:</div><div class="val" id="cvGrade"></div></div>
+    </div>
+
+    <div class="cv-section">
+      <h2>معلومات التواصل والإقامة</h2>
+      <div class="row"><div class="key">رقم الهاتف:</div><div class="val" id="cvPhone" dir="ltr"></div></div>
+      <div class="row"><div class="key">البريد الإلكتروني:</div><div class="val" id="cvEmail" dir="ltr"></div></div>
+      <div class="row"><div class="key">المحافظة:</div><div class="val" id="cvProvince"></div></div>
+      <div class="row"><div class="key">المدينة:</div><div class="val" id="cvCity"></div></div>
+      <div class="row"><div class="key">نقاط القوة:</div><div class="val" id="cvStrengths"></div></div>
+    </div>
+
+    <div class="cv-section">
+      <h2>الإنجازات</h2>
+      <ul class="list" id="cvAchievements"></ul>
+    </div>
+
+    <div class="cv-section">
+      <h2>التعليم الشرعي</h2>
+      <div class="val" id="cvReligious" style="font-size:13px;line-height:2"></div>
+    </div>
+
+    <div class="cv-section">
+      <h2>اللغات</h2>
+      <ul class="list" id="cvLanguages"></ul>
+    </div>
+
+    <div class="cv-section">
+      <h2>الاهتمامات</h2>
+      <ul class="list" id="cvInterests"></ul>
+    </div>
+
+    <div class="cv-footer">السيرة الذاتية</div>
+  </div>
+</div>
+
+<script>
+const ids = [
+  "name","arabicName","summary","passport","passportExpiry","nationality","birth","qualification",
+  "field","institution","grade","phone","email","province","city","strengths",
+  "achievements","religious","languages","interests"
+];
+
+function value(id){ return document.getElementById(id).value.trim(); }
+
+function linesToList(text, target){
+  const el=document.getElementById(target);
+  el.innerHTML="";
+  text.split(/\n+/).map(x=>x.trim()).filter(Boolean).forEach(x=>{
+    const li=document.createElement("li"); li.textContent=x; el.appendChild(li);
+  });
+}
+
+function updateCV(){
+  document.getElementById("cvName").textContent=value("name");
+  document.getElementById("cvArabicName").textContent=value("arabicName");
+  document.getElementById("cvSummary").textContent=value("summary");
+  document.getElementById("cvPassport").textContent=value("passport") || "—";
+  document.getElementById("cvExpiry").textContent=value("passportExpiry");
+  document.getElementById("cvNationality").textContent=value("nationality");
+  document.getElementById("cvBirth").textContent=value("birth");
+  document.getElementById("cvQualification").textContent=value("qualification");
+  document.getElementById("cvField").textContent=value("field");
+  document.getElementById("cvInstitution").textContent=value("institution");
+  document.getElementById("cvGrade").textContent=value("grade");
+  document.getElementById("cvPhone").textContent=value("phone");
+  document.getElementById("cvEmail").textContent=value("email");
+  document.getElementById("cvProvince").textContent=value("province");
+  document.getElementById("cvCity").textContent=value("city");
+  document.getElementById("cvStrengths").textContent=value("strengths");
+  document.getElementById("cvReligious").textContent=value("religious");
+  linesToList(value("achievements"),"cvAchievements");
+  linesToList(value("languages"),"cvLanguages");
+  linesToList(value("interests"),"cvInterests");
+}
+
+document.getElementById("photo").addEventListener("change", function(e){
+  const file=e.target.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=function(ev){
+    document.getElementById("preview").innerHTML='<img src="'+ev.target.result+'">';
+    const img=document.getElementById("cvPhoto");
+    img.src=ev.target.result; img.style.display="block";
+  };
+  reader.readAsDataURL(file);
+});
+
+function generatePDF(){
+  updateCV();
+  const cv=document.getElementById("cv");
+  const name=(value("name")||"السيرة الذاتية").replace(/[\\/:*?"<>|]/g,"_");
+
+  // Make a clean print document. This avoids html2pdf/html2canvas blank-page
+  // problems on Android browsers and keeps the actual CSS design intact.
+  const printWin=window.open("","_blank");
+  if(!printWin){
+    alert("Izinkan pop-up di browser lalu tekan tombol PDF lagi.");
+    return;
+  }
+
+  const styles=[...document.querySelectorAll("style")].map(s=>s.textContent).join("\n");
+  const fontLink='<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">';
+
+  printWin.document.open();
+  printWin.document.write(`<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CV-${name}</title>
+${fontLink}
+<style>${styles}
+@page{size:A4 portrait;margin:0}
+html,body{margin:0!important;padding:0!important;width:210mm!important;min-width:210mm!important;background:#fff!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+.cv{display:block!important;width:242mm!important;min-width:242mm!important;height:297mm!important;min-height:297mm!important;margin:0!important;padding:10mm 14mm!important;transform:scale(.868)!important;transform-origin:top right!important;box-shadow:none!important;border:0!important;overflow:hidden!important;background:#fff!important}
+.cv .cv-header{padding:5mm 0 6mm!important;gap:12px!important}
+.cv .cv-photo{width:45mm!important;height:67.5mm!important}
+.cv .cv-name{font-size:29px!important;margin-bottom:1px!important}
+.cv .cv-name-ar{font-size:24px!important;margin-bottom:6px!important}
+.cv .cv-summary{font-size:14.5px!important;line-height:1.5!important}
+.cv .cv-section{margin-top:8px!important}
+.cv .cv-section h2{font-size:19px!important;padding-bottom:2px!important;margin-bottom:4px!important}
+.cv .cv-section h2:after{bottom:-4px!important}
+.cv .row{font-size:13.5px!important;line-height:1.5!important;gap:5px!important}
+.cv .key{min-width:40mm!important}
+.cv .list{font-size:13.5px!important;line-height:1.5!important;padding-right:15px!important}
+.cv .list li{margin-bottom:2px!important}
+.cv .cv-footer{margin-top:6px!important;padding-top:4px!important;font-size:8px!important}
+.cv #cvPhone,.cv #cvEmail{direction:ltr!important;text-align:right!important;unicode-bidi:plaintext!important}
+</style>
+</head>
+<body>
+${cv.outerHTML}
+<script>
+(function(){
+  function go(){setTimeout(function(){window.focus();window.print();},500);}
+  if(document.fonts && document.fonts.ready){document.fonts.ready.then(go).catch(go);}else{go();}
+})();
+<\/script>
+</body>
+</html>`);
+  printWin.document.close();
+}
+
+updateCV();
+</script>
+</body>
+</html>
