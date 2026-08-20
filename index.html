@@ -124,7 +124,7 @@ button:hover{transform:translateY(-1px)}
 .cv-title{
    text-align:center;
    font-family:"Amiri",serif;
-   font-size:26px;
+   font-size:24px;
    font-weight:700;
    color:var(--green);
    margin:0 0 5mm;
@@ -164,44 +164,45 @@ button:hover{transform:translateY(-1px)}
 }
 .cv-name-ar{
   font-family:"Amiri",serif;
-  font-size:28px;font-weight:700;
+  font-size:24px;font-weight:700;
   color:var(--green2);
   margin:0 0 6px;
 }
 .cv-summary{
   font-family:"Amiri",serif;
-  font-size:17px;line-height:1.5;color:#46524e
+  font-size:15px;line-height:1.5;color:#46524e
 }
 .cv-section{margin-top:12px}
 .cv-section h2{
   font-family:"Amiri",serif;
-  font-size:21px;color:var(--green);
+  font-size:19px;color:var(--green);
   border-bottom:1px solid #ded6c5;
   padding:0 0 4px;margin:0 0 7px;
   position:relative
 }
 .cv-section h2:after{
   content:"";
-  display:block;width:38mm;height:2px;
+  display:inline-block;
+  width:38mm;height:2px;
   background:var(--gold);
   position:relative;right:0;bottom:-6px
 }
 .row{
   display:flex;gap:8px;font-family:"Amiri",serif;
-  font-size:16px;line-height:1.5
+  font-size:14px;line-height:1.5
 }
 .key{font-weight:700;min-width:44mm;color:#33433e}
 .val{flex:1;color:#293531}
 .list{
   margin:0;padding-right:19px;
   font-family:"Amiri",serif;
-  font-size:16px;line-height:1.5
+  font-size:14px;line-height:1.5
 }
 .list li{padding-right:3px;margin-bottom:2px}
 .cv-footer{
   text-align:center;margin-top:17px;padding-top:8px;
   border-top:1px solid #e4ddce;
-  font-family:"Amiri",serif;font-size:12px;color:#9b8b68
+  font-family:"Amiri",serif;font-size:10px;color:#9b8b68
 }
 @media(max-width:700px){
   .grid{grid-template-columns:1fr}
@@ -216,6 +217,7 @@ button:hover{transform:translateY(-1px)}
   #cv{display:block!important;visibility:visible!important;position:relative!important;width:210mm!important;min-width:210mm!important;height:297mm!important;min-height:297mm!important;margin:0!important;padding:14mm 16mm!important;transform:none!important;box-shadow:none!important;border:0!important;overflow:hidden!important;background:#fff!important}
   #cv *{visibility:visible!important}
 
+  /* Compact A4: keep the complete CV on ONE page */
   #cv{
     box-sizing:border-box!important;
     width:242mm!important;
@@ -223,23 +225,24 @@ button:hover{transform:translateY(-1px)}
     height:297mm!important;
     min-height:297mm!important;
     padding:10mm 14mm!important;
-    transform:scale(.81)!important;
+    transform:scale(.868)!important;
     transform-origin:top right!important;
   }
   #cv .cv-header{padding:5mm 0 6mm!important;gap:12px!important}
   #cv .cv-photo{width:45mm!important;height:67.5mm!important}
   #cv .cv-name{font-size:29px!important;margin-bottom:1px!important}
-  #cv .cv-name-ar{font-size:28px!important;margin-bottom:6px!important}
-  #cv .cv-summary{font-size:16.5px!important;line-height:1.5!important}
+  #cv .cv-name-ar{font-size:24px!important;margin-bottom:6px!important}
+  #cv .cv-summary{font-size:14.5px!important;line-height:1.5!important}
   #cv .cv-section{margin-top:8px!important}
-  #cv .cv-section h2{font-size:21px!important;padding-bottom:2px!important;margin-bottom:4px!important}
+  #cv .cv-section h2{font-size:19px!important;padding-bottom:2px!important;margin-bottom:4px!important}
   #cv .cv-section h2:after{bottom:-4px!important}
-  #cv .row{font-size:15.5px!important;line-height:1.5!important;gap:5px!important}
+  #cv .row{font-size:13.5px!important;line-height:1.5!important;gap:5px!important}
   #cv .key{min-width:40mm!important}
-  #cv .list{font-size:15.5px!important;line-height:1.5!important;padding-right:15px!important}
+  #cv .list{font-size:13.5px!important;line-height:1.5!important;padding-right:15px!important}
   #cv .list li{margin-bottom:2px!important}
-  #cv .cv-footer{margin-top:6px!important;padding-top:4px!important;font-size:10px!important}
+  #cv .cv-footer{margin-top:6px!important;padding-top:4px!important;font-size:8px!important}
 
+  /* Contact values: keep phone and email aligned to the RIGHT */
   #cv #cvPhone,#cv #cvEmail{
     direction:ltr!important;
     text-align:right!important;
@@ -321,7 +324,7 @@ button:hover{transform:translateY(-1px)}
         <input id="email" value="hilyamawaddah03@gmail.com" dir="ltr">
       </div>
       <div>
-        <label>المحافظة</label>
+        <label>المافظة</label>
         <input id="province" value="جامبي">
       </div>
       <div>
@@ -408,7 +411,7 @@ button:hover{transform:translateY(-1px)}
 
     <div class="cv-section">
       <h2>التعليم الشرعي</h2>
-      <div class="val" id="cvReligious" style="font-size:15px;line-height:2"></div>
+      <div class="val" id="cvReligious" style="font-size:13px;line-height:2"></div>
     </div>
 
     <div class="cv-section">
@@ -465,13 +468,6 @@ function updateCV(){
   linesToList(value("interests"),"cvInterests");
 }
 
-ids.forEach(id => {
-  const el = document.getElementById(id);
-  if(el) {
-    el.addEventListener("input", updateCV);
-  }
-});
-
 document.getElementById("photo").addEventListener("change", function(e){
   const file=e.target.files[0];
   if(!file)return;
@@ -509,21 +505,20 @@ ${fontLink}
 <style>${styles}
 @page{size:A4 portrait;margin:0}
 html,body{margin:0!important;padding:0!important;width:210mm!important;min-width:210mm!important;background:#fff!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
-.cv{display:block!important;width:242mm!important;min-width:242mm!important;height:297mm!important;min-height:297mm!important;margin:0!important;padding:10mm 14mm!important;transform:scale(.81)!important;transform-origin:top right!important;box-shadow:none!important;border:0!important;overflow:hidden!important;background:#fff!important}
+.cv{display:block!important;width:242mm!important;min-width:242mm!important;height:297mm!important;min-height:297mm!important;margin:0!important;padding:10mm 14mm!important;transform:scale(.868)!important;transform-origin:top right!important;box-shadow:none!important;border:0!important;overflow:hidden!important;background:#fff!important}
 .cv .cv-header{padding:5mm 0 6mm!important;gap:12px!important}
 .cv .cv-photo{width:45mm!important;height:67.5mm!important}
-.cv .cv-title{font-size:26px!important}
 .cv .cv-name{font-size:29px!important;margin-bottom:1px!important}
-.cv .cv-name-ar{font-size:28px!important;margin-bottom:6px!important}
-.cv .cv-summary{font-size:16.5px!important;line-height:1.5!important}
+.cv .cv-name-ar{font-size:24px!important;margin-bottom:6px!important}
+.cv .cv-summary{font-size:14.5px!important;line-height:1.5!important}
 .cv .cv-section{margin-top:8px!important}
-.cv .cv-section h2{font-size:21px!important;padding-bottom:2px!important;margin-bottom:4px!important}
+.cv .cv-section h2{font-size:19px!important;padding-bottom:2px!important;margin-bottom:4px!important}
 .cv .cv-section h2:after{bottom:-4px!important}
-.cv .row{font-size:15.5px!important;line-height:1.5!important;gap:5px!important}
+.cv .row{font-size:13.5px!important;line-height:1.5!important;gap:5px!important}
 .cv .key{min-width:40mm!important}
-.cv .list{font-size:15.5px!important;line-height:1.5!important;padding-right:15px!important}
+.cv .list{font-size:13.5px!important;line-height:1.5!important;padding-right:15px!important}
 .cv .list li{margin-bottom:2px!important}
-.cv .cv-footer{margin-top:6px!important;padding-top:4px!important;font-size:10px!important}
+.cv .cv-footer{margin-top:6px!important;padding-top:4px!important;font-size:8px!important}
 .cv #cvPhone,.cv #cvEmail{direction:ltr!important;text-align:right!important;unicode-bidi:plaintext!important}
 </style>
 </head>
