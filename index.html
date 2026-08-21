@@ -341,9 +341,6 @@ min-width:242mm!important;
     <textarea id="achievements">حفظ القرآن الكريم كاملاً (30 جزءاً) وإتمام حفظه في سن الخامسة عشرة.
 حفظ عدد من المتون العلمية الإسلامية، منها: الأربعون النووية، نواقض الإسلام، الأصول الثلاثة، القواعد الأربع، الأصول الستة، القواعد الفقهية، سلم الوصول، البيقونية، الجزرية، اللامية، الرحبية، والحائية.</textarea>
 
-    <div class="section-title">التعليم الشرعي</div>
-    <textarea id="religious">دراسة العلوم الشرعية وعلوم الدين منذ سن مبكرة.</textarea>
-
     <div class="section-title">اللغات</div>
     <textarea id="languages">اللغة العربية
 اللغة الإنجليزية: مستوى متوسط</textarea>
@@ -410,11 +407,6 @@ min-width:242mm!important;
     </div>
 
     <div class="cv-section">
-      <h2>التعليم الشرعي</h2>
-      <div class="val" id="cvReligious" style="font-size:13px;line-height:2"></div>
-    </div>
-
-    <div class="cv-section">
       <h2>اللغات</h2>
       <ul class="list" id="cvLanguages"></ul>
     </div>
@@ -432,7 +424,7 @@ min-width:242mm!important;
 const ids = [
   "name","arabicName","summary","passport","passportExpiry","nationality","birth","qualification",
   "field","institution","grade","phone","email","province","city","strengths",
-  "achievements","religious","languages","interests"
+  "achievements","languages","interests"
 ];
 
 function value(id){ return document.getElementById(id).value.trim(); }
@@ -510,15 +502,15 @@ html,body{margin:0!important;padding:0!important;width:210mm!important;min-width
 .cv .cv-photo{width:35mm!important;height:45mm!important}
   .cv .cv-name{font-size:30.3px!important;margin-bottom:1px!important}
   .cv .cv-name-ar{font-size:31.3px!important;margin-bottom:6px!important}
-  .cv .cv-summary{font-size:15.8px!important;line-height:1.5!important;text-align:justify!important}
+  .cv .cv-summary{font-size:16.8px!important;line-height:1.5!important;text-align:justify!important}
   .cv .cv-section{margin-top:8px!important}
-  .cv .cv-section h2{font-size:20.3px!important;padding-bottom:2px!important;margin-bottom:4px!important}
+  .cv .cv-section h2{font-size:21.3px!important;padding-bottom:2px!important;margin-bottom:4px!important}
   .cv .cv-section h2:after{bottom:-4px!important}
-  .cv .row{font-size:14.8px!important;line-height:1.5!important;gap:5px!important}
+  .cv .row{font-size:15.8px!important;line-height:1.5!important;gap:5px!important}
   .cv .key{min-width:40mm!important}
   .cv .list{font-size:14.8px!important;line-height:1.5!important;padding-right:15px!important}
 .cv .list li{margin-bottom:2px!important}
-.cv .cv-footer{margin-top:6px!important;padding-top:4px!important;font-size:8px!important}
+.cv .cv-footer{margin-top:6px!important;padding-top:4px!important;font-size:9px!important;}
 .cv #cvPhone,.cv #cvEmail{direction:ltr!important;text-align:right!important;unicode-bidi:plaintext!important}
 </style>
 </head>
